@@ -111,7 +111,7 @@
             <version>${hutool.version}</version>
         </dependency>
 
-<!--        MyBatis-Plus-->
+        <!-- MyBatis-Plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
@@ -140,6 +140,25 @@
             <version>${lang3.version}</version>
         </dependency>
 
+        <!-- http://localhost:8080/doc.html-->
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <!-- http://localhost:8080/swagger-ui.html-->
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+        <!--		<dependency>-->
+        <!--			<groupId>io.springfox</groupId>-->
+        <!--			<artifactId>springfox-swagger-ui</artifactId>-->
+        <!--			<version>2.9.2</version>-->
+        <!--		</dependency>-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.9.6</version>
+        </dependency>
     </dependencies>
 
     <build>

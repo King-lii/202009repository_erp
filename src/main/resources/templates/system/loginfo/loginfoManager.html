@@ -66,10 +66,10 @@
 <div>
     <table class="layui-hide" id="loginfoTable" lay-filter="loginfoTable">
         <div id="loginfoToolBar" style="display: none">
-            <button type="button" class="layui-btn layui-btn-danger" lay-submit="" lay-filter="doSearch"><span class="layui-icon layui-icon-delete"></span>批量删除</button>
+            <button type="button" lay-event="batchDelete" class="layui-btn layui-btn-danger" lay-submit="" lay-filter="doSearch"><span class="layui-icon layui-icon-delete"></span>批量删除</button>
         </div>
         <div id="loginfoRowBar" style="display: none">
-            <button type="button" class="layui-btn-sm layui-btn-danger" lay-submit="" lay-filter="doSearch"><span class="layui-icon layui-icon-delete"></span>删除</button>
+            <button type="button" lay-event="delete" class="layui-btn-sm layui-btn-danger" lay-submit="" lay-filter="doSearch"><span class="layui-icon layui-icon-delete"></span>删除</button>
         </div>
 
     </table>
@@ -79,7 +79,7 @@
 
 <script type="text/javascript">
     layui.use(['jquery','form','table','layer','laydate'],function (){
-        var $ = layui.jQuery;
+        var $ = layui.jquery;
         var form = layui.form;
         var table = layui.table;
         var layer = layui.layer;
@@ -123,6 +123,78 @@
             });
             return false;
         })
+
+        //监听工具条事件
+        table.on('toolbar(loginfoTable)', function(obj){
+
+            switch(obj.event){
+                case 'batchDelete':
+                    batchDelete();
+                    break;
+            };
+        });
+
+        //监听工具条
+        table.on('tool(loginfoTable)', function(obj){
+            switch (obj.event){
+                case 'delete':
+                    deleteInfo(obj.data);
+                    break;
+            }
+
+        });
+
+        //批量删除
+        function batchDelete() {
+            //得到选中行
+            var checkStatus = table.checkStatus('loginfoTable'); //idTest 即为基础参数 id 对应的值
+            // checkStatus.data //获取选中行的数据
+            // checkStatus.data.length //获取选中行数量，可作为是否有选中行的条件
+            // checkStatus.isAll//表格是否全选
+
+            if (checkStatus.data.length>0){
+                //eg1
+                layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
+                    //do something
+                        var data = checkStatus.data;
+                        var ids = '';
+                        $.each(data,function (index,item){
+                            if (index == 0){
+                                ids+='ids='+item.id;
+                            }else {
+                                ids+="&ids="+item.id;
+                            }
+                        })
+                    $.post("/loginfo/batchDeleteLoginfo",ids,function (res){
+                        if (res.code == 200){
+                            tableIns.reload();
+                            layer.msg(res.msg)
+                        }else if (res.code == -1){
+                            layer.msg(res.msg)
+                        }
+                    })
+                    layer.close(index);
+                });
+            }else {
+                layer.msg("请选中行");
+            }
+
+        }
+        function deleteInfo(data){
+            //eg1
+            layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
+                //do something
+                $.post("/loginfo/deleteLoginfo", {id:data.id},function (res){
+                    if (res.code == 200){
+                        tableIns.reload();
+                        layer.msg(res.msg)
+                    }else if (res.code == -1){
+                        layer.msg(res.msg)
+                    }
+                })
+                layer.close(index);
+            });
+        }
     })
 </script>
 </body>

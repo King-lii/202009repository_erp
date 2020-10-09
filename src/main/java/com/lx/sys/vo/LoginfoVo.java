@@ -16,6 +16,8 @@ public class LoginfoVo extends Loginfo {
     private Integer page = 1;
     private Integer limit = 10;
 
+    private Integer[] ids ;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date startTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
