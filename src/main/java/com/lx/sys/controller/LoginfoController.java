@@ -30,7 +30,7 @@ import java.util.Collection;
  * @since 2020-10-07
  */
 @RestController
-@RequestMapping("/loginfo")
+@RequestMapping("loginfo")
 public class LoginfoController {
 
     @Autowired
@@ -76,8 +76,7 @@ public class LoginfoController {
     @RequestMapping("batchDeleteLoginfo")
     public ResultObj batchDeleteLoginfo(LoginfoVo loginfoVo){
         try {
-            Collection<Serializable> idList = new ArrayList<>();
-            idList.addAll(Arrays.asList(loginfoVo.getIds()));
+            Collection<Serializable> idList = new ArrayList<>(Arrays.asList(loginfoVo.getIds()));
             this.loginfoService.removeByIds(idList);
             return ResultObj.DELETE_SUCCESS;
         }catch (Exception e){

@@ -3,6 +3,9 @@ package com.lx.sys.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * 路由
+ */
 @Controller
 @RequestMapping("sys")
 public class SystemController {
@@ -34,6 +37,13 @@ public class SystemController {
     @RequestMapping("toLoginfoManager")
     public String  toLoginfoManager(){
         return "system/loginfo/loginfoManager";
+    }
+    /**
+     * 跳转到公告
+     */
+    @RequestMapping("toNoticeManager")
+    public String  toNoticeManager(){
+        return "system/notice/noticeManager";
     }
 
 }
