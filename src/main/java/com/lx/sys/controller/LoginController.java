@@ -52,6 +52,8 @@ public class LoginController {
             entity.setLogintime(new Date());
             this.loginfoService.save(entity);
 
+
+
             return ResultObj.LOGIN_SUCCESS;
         }catch (AuthenticationException e){
             e.printStackTrace();

@@ -7,7 +7,6 @@ import com.lx.sys.commen.*;
 import com.lx.sys.entity.Permission;
 import com.lx.sys.entity.User;
 import com.lx.sys.service.IPermissionService;
-import com.lx.sys.vo.PermissionVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +32,7 @@ public class MenuController {
     private IPermissionService permissionService;
 
     @RequestMapping("loadIndexLeftMenuJson")
-    public DataGridView loadIndexLeftMenuJson(PermissionVo permissionVo){
+    public DataGridView loadIndexLeftMenuJson(){
 
         //查询所有菜单
         QueryWrapper<Permission> queryWrapper = new QueryWrapper<>();
@@ -43,15 +42,16 @@ public class MenuController {
 
         User user = (User) WebUtils.getSession().getAttribute("user");
         List<Permission> list = null;
-        if (user.getType() == Constast.USER_TYPE_SUPER){
+        if (user.getType().equals(Constast.USER_TYPE_SUPER)){
             list = permissionService.list(queryWrapper);
-        }else if (user.getType() == Constast.USER_TYPE_NORMAL){
+        }else if (user.getType().equals(Constast.USER_TYPE_NORMAL)){
             /**
              * 根据用户ID+角色+权限去查询
              */
             list = permissionService.list(queryWrapper);
         }
         List<TreeNode> treeNodes = new ArrayList<>();
+        assert list != null;
         for (Permission permission : list) {
             treeNodes.add(new TreeNode(
                     permission.getId()
@@ -59,7 +59,7 @@ public class MenuController {
                     ,permission.getTitle()
                     ,permission.getIcon()
                     ,permission.getHref()
-                    ,permission.getOpen() == Constast.OPEN_TRUE?true:false));
+                    , permission.getOpen().equals(Constast.OPEN_TRUE)));
         }
         List<TreeNode> list2 = TreeNodeBuilder.build(treeNodes , 1);
         return new DataGridView(list2);

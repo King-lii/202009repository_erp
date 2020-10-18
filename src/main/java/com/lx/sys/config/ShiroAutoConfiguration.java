@@ -123,7 +123,7 @@ public class ShiroAutoConfiguration {
 	 */
 	@Bean
 	public FilterRegistrationBean<DelegatingFilterProxy> delegatingFilterProxy() {
-		FilterRegistrationBean<DelegatingFilterProxy> filterRegistrationBean = new FilterRegistrationBean<DelegatingFilterProxy>();
+		FilterRegistrationBean<DelegatingFilterProxy> filterRegistrationBean = new FilterRegistrationBean<>();
 		DelegatingFilterProxy proxy = new DelegatingFilterProxy();
 		proxy.setTargetFilterLifecycle(true);
 		proxy.setTargetBeanName(SHIRO_FILTER);

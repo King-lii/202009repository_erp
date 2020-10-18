@@ -10,7 +10,6 @@ import com.lx.sys.commen.WebUtils;
 import com.lx.sys.entity.Notice;
 import com.lx.sys.entity.User;
 import com.lx.sys.service.INoticeService;
-import com.lx.sys.vo.LoginfoVo;
 import com.lx.sys.vo.NoticeVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
