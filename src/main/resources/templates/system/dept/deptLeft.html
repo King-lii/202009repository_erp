@@ -23,13 +23,14 @@
 
 <script type="text/javascript" src="/resources/layui/layui.js"></script>
 <script>
+    var deptTree;
     layui.extend({
         dtree: '/resources/layui_ext/dtree/dtree'   // {/}的意思即代表采用自有路径，即不跟随 base 路径
     }).use(['dtree','layer','jquery'], function(){
         var dtree = layui.dtree, layer = layui.layer, $ = layui.jquery;
 
         // 初始化树
-        var deptTree = dtree.render({
+         deptTree = dtree.render({
             elem: "#deptTree",
             dataStyle: "layuiStyle",  //使用layui风格的数据格式
             dataFormat: "list",  //配置data的风格为list
