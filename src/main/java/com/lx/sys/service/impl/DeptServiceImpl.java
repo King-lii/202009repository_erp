@@ -25,8 +25,8 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
     }
 
     @Override
-    public boolean update(Wrapper<Dept> updateWrapper) {
-        return false;
+    public boolean updateById(Dept entity) {
+        return super.updateById(entity);
     }
 
     @Override

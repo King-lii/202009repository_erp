@@ -19,11 +19,11 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("login")
-@Api(value = "A" , consumes = "用户管理" , produces = "B")
 public class LoginController {
 
     @Autowired
     ILoginfoService loginfoService;
+
     @RequestMapping("login")
     public ResultObj login(String loginname , String pwd){
         Subject subject = SecurityUtils.getSubject();
@@ -51,8 +51,6 @@ public class LoginController {
             entity.setLoginip(WebUtils.getRequest().getRemoteAddr());
             entity.setLogintime(new Date());
             this.loginfoService.save(entity);
-
-
 
             return ResultObj.LOGIN_SUCCESS;
         }catch (AuthenticationException e){
