@@ -22,13 +22,17 @@
         <druid.version>1.1.18</druid.version>
         <log4j.version>1.2.17</log4j.version>
         <hutool.version>4.6.6</hutool.version>
-
+        <lang3.version>3.9</lang3.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -111,7 +115,56 @@
             <version>${hutool.version}</version>
         </dependency>
 
+        <!-- MyBatis-Plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.29</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibeetl</groupId>
+            <artifactId>beetl</artifactId>
+            <version>3.0.11.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${lang3.version}</version>
+        </dependency>
+
+        <!-- http://localhost:8080/doc.html-->
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <!-- http://localhost:8080/swagger-ui.html-->
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+        <!--		<dependency>-->
+        <!--			<groupId>io.springfox</groupId>-->
+        <!--			<artifactId>springfox-swagger-ui</artifactId>-->
+        <!--			<version>2.9.2</version>-->
+        <!--		</dependency>-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.9.6</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
