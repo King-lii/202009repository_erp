@@ -16,6 +16,9 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserRealm extends AuthorizingRealm {
+    /**
+     * 注入userservice接口
+     */
     @Autowired
     private IUserService iUserService;
     /**

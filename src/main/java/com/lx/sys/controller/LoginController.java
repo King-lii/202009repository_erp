@@ -21,6 +21,9 @@ public class LoginController {
         try {
             subject.login(token);
             ActiverUser activerUser = (ActiverUser) subject.getPrincipal();
+            /**
+             * 将取出来的登陆数据放入session
+             */
             WebUtils.getSession().setAttribute("user",activerUser.getUser());
             return ResultObj.LOGIN_SUCCESS;
         } catch (AuthenticationException e) {
