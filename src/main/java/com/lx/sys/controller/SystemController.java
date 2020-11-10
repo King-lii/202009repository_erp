@@ -21,4 +21,11 @@ public class SystemController {
     public String index(){
         return "system/index/index";
     }
+    /**
+     * 跳转到工作台
+     */
+    @RequestMapping("toDeskManager")
+    public String toDeskManager(){
+        return "system/index/deskManager";
+    }
 }
