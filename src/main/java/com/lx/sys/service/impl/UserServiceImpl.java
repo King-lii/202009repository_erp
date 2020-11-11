@@ -5,6 +5,7 @@ import com.lx.sys.mapper.UserMapper;
 import com.lx.sys.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
  * @since 2020-10-06
  */
 @Service
+@Transactional
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
 }
