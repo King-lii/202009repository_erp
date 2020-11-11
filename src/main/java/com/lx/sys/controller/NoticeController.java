@@ -11,12 +11,15 @@ import com.lx.sys.entity.Notice;
 import com.lx.sys.entity.User;
 import com.lx.sys.service.INoticeService;
 import com.lx.sys.vo.NoticeVo;
+import com.sun.deploy.nativesandbox.comm.Request;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,6 +47,7 @@ public class NoticeController {
      */
     @RequestMapping("loadAllNotice")
     public DataGridView loadAllNotice(NoticeVo noticeVo){
+
         IPage<Notice> page = new Page<>(noticeVo.getPage(),noticeVo.getLimit());
         QueryWrapper<Notice> queryWrapper = new QueryWrapper<>();
 

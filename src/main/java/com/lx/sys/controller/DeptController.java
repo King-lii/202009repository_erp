@@ -1,7 +1,6 @@
 package com.lx.sys.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -58,13 +57,13 @@ public class DeptController {
     @RequestMapping("loadAllDept")
     public DataGridView loadAllDept(DeptVo deptVo){
         IPage<Dept> page = new Page<>(deptVo.getPage(),deptVo.getLimit());
+
         QueryWrapper<Dept> queryWrapper = new QueryWrapper<>();
 
         queryWrapper.like(StringUtils.isNotBlank(deptVo.getTitle()),"title",deptVo.getTitle());
         queryWrapper.like(StringUtils.isNotBlank(deptVo.getAddress()),"address",deptVo.getAddress());
         queryWrapper.like(StringUtils.isNotBlank(deptVo.getRemark()),"remark",deptVo.getRemark());
-        queryWrapper.eq(null!=deptVo.getId(),"id",deptVo.getId())
-                .or().eq(null!=deptVo.getId(),"pid",deptVo.getId());
+        queryWrapper.eq(null!=deptVo.getId(),"id",deptVo.getId()).or().eq(null!=deptVo.getId(),"pid",deptVo.getId());
 
         queryWrapper.orderByAsc("ordernum");
         this.deptService.page(page,queryWrapper);
