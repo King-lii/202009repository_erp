@@ -66,7 +66,7 @@ public class PermissionController {
         QueryWrapper<Permission> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("type", Constast.TYPE_PERMISSION);
         queryWrapper.like(StringUtils.isNotBlank(permissionVo.getTitle()),"title",permissionVo.getTitle());
-        queryWrapper.eq(null!=permissionVo.getId(),"id",permissionVo.getId()).or().eq(null!=permissionVo.getId(),"pid",permissionVo.getId());
+        queryWrapper.eq(null!=permissionVo.getId(),"pid",permissionVo.getId());
 
         queryWrapper.orderByAsc("ordernum");
         this.permissionService.page(page,queryWrapper);

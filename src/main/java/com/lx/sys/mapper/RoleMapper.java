@@ -2,6 +2,10 @@ package com.lx.sys.mapper;
 
 import com.lx.sys.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,19 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface RoleMapper extends BaseMapper<Role> {
 
+    /**
+     *
+     * @param id
+     */
+    void deleteRolePermissionByRid(Serializable id);
+
+    /**
+     *
+     * @param id
+     */
+    void deleteRoleUserByRid(Serializable id);
+
+    List<Integer> queryRolePermissionIdsByRid(Integer roleId);
+
+    void saveRolePermission(@Param("rid") Integer roleId, @Param("pid") Integer pid);
 }

@@ -95,9 +95,9 @@ public class MenuController {
         IPage<Permission> page = new Page<>(permissionVo.getPage(),permissionVo.getLimit());
 
         QueryWrapper<Permission> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(null!=permissionVo.getId(),"id",permissionVo.getId()).or().eq(null!=permissionVo.getId(),"pid",permissionVo.getId());
         queryWrapper.eq("type", Constast.TYPE_MENU);
         queryWrapper.like(StringUtils.isNotBlank(permissionVo.getTitle()),"title",permissionVo.getTitle());
-        queryWrapper.eq(null!=permissionVo.getId(),"id",permissionVo.getId()).or().eq(null!=permissionVo.getId(),"pid",permissionVo.getId());
 
         queryWrapper.orderByAsc("ordernum");
         this.permissionService.page(page,queryWrapper);

@@ -13,6 +13,8 @@
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all"/>
     <link rel="stylesheet" href="/resources/css/public.css" media="all"/>
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/dtree.css" media="all"/>
+    <link rel="stylesheet" href="/resources/layui_ext/dtree/font/dtreefont.css" media="all"/>
 
 </head>
 <body class="childrenBody">
@@ -76,7 +78,7 @@
             <button type="button" lay-event="delete" class="layui-btn-sm layui-btn-danger" lay-submit=""
                     lay-filter="doSearch"><span class="layui-icon layui-icon-delete"></span>删除
             </button>
-            <button type="button" lay-event="selectPermission" class="layui-btn-sm layui-btn-danger" lay-submit=""
+            <button type="button" lay-event="seletePermission" class="layui-btn-sm layui-btn-danger" lay-submit=""
                     lay-filter="doSearch"><span class="layui-icon layui-icon-delete"></span>分配权限
             </button>
         </div>
@@ -123,16 +125,24 @@
 </div>
 <!--添加修改的弹出层结束-->
 
+<!--分配权限弹出层开始-->
+<div style="display: none" id="selectRolePermission">
+    <!--树容器-->
+    <ul id="permissionTree" class="dtree" data-id="0"></ul>
+</div>
+<!--分配权限弹出层结束-->
 <script type="text/javascript" src="/resources/layui/layui.js"></script>
 
 <script type="text/javascript">
 
-    layui.use(['jquery', 'form', 'table', 'layer'], function () {
+    layui.extend({
+        dtree: '/resources/layui_ext/dtree/dtree'
+    }).use(['jquery', 'form', 'table', 'layer','dtree'], function () {
         var $ = layui.jquery;
         var form = layui.form;
         var table = layui.table;
         var layer = layui.layer;
-
+        var dtree = layui.dtree;
         //加载数据
         var tableIns = table.render({
             elem: '#roleTable'
@@ -186,7 +196,7 @@
                     deleteRole(obj.data);
                     break;
                 case 'seletePermission':
-                    showRole(obj.data);
+                    seletePermission(obj.data);
                     break;
             }
 
@@ -240,6 +250,45 @@
                 }
             })
         }
+        //打开权限分配弹出层
+        function seletePermission(data) {
+            mainIndex = layer.open({
+                type: 1,
+                content: $("#selectRolePermission"),
+                area: ['800px', '600px'],
+                title: "分配"+data.name+"权限",
+                btn: ['确认', '取消']
+                ,yes: function(index, layero){
+                //按钮【按钮一】的回调
+                    var permissionDate = dtree.getCheckbarNodesParam("permissionTree")
+                    var params = "rid="+data.id;
+                    $.each(permissionDate,function (index,item) {
+                        params+="&ids="+item.nodeId;
+                    })
+                        $.post("/role/saveRolePermission",params,function (res) {
+                            layer.msg(res.msg);
+                        })
+                    }
+                ,no: function(index, layero){
+                        //按钮【按钮二】的回调
+                        //return false 开启该代码可禁止点击该按钮关闭
+                    alert("按钮【按钮二】的回调")
+                    },
+                btnAlign: 'c',
+                success: function () {
+                    dtree.render({
+                        elem: "#permissionTree",
+                        url: "/role/initPermissionByRoleId?roleId="+data.id,
+                        checkbar: true,
+                        dataStyle: "layuiStyle",  //使用layui风格的数据格式
+                        dataFormat: "list",  //配置data的风格为list
+                        response: {message: "msg", statusCode: 0},  //修改response中返回数据的定义
+                        checkbarType: "all" // 默认就是all，其他的值为： no-all  p-casc   self  only
+                    });
+
+                }
+            })
+        }
         form.on("submit(doSubmit)",function (data){
             $.post(url, data.field, function (res) {
                 if (res.code == 200) {
@@ -250,7 +299,7 @@
             })
             return false;
         })
-    })
+    });
 </script>
 </body>
 </html>

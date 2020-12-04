@@ -1,5 +1,6 @@
 package com.lx;
 
+import com.lx.sys.commen.TreeNode;
 import com.lx.sys.controller.MenuController;
 import com.lx.sys.controller.NoticeController;
 import com.lx.sys.vo.NoticeVo;
@@ -15,7 +16,8 @@ class RepositoryErpApplicationTests {
     MenuController menuController;
     @Test
     void contextLoads() {
-        System.out.printf("contextLoads\n\n\n\n\n"+menuController.loadMenuManagerLeftTreeJson(new PermissionVo()).toString());
+      TreeNode treeNode =  new TreeNode(1, 1, "1", "1","1", true);
+        System.out.printf(treeNode.toString());
     }
 
 }
