@@ -1,5 +1,6 @@
 package com.lx.sys.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lx.sys.entity.Role;
 import com.lx.sys.mapper.RoleMapper;
 import com.lx.sys.service.IRoleService;
@@ -44,5 +45,11 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
                 roleMapper.saveRolePermission(roleId,pid);
             }
         }
+    }
+
+    @Override
+    public List<Integer> queryUserRoleIdsByUid(Integer id) {
+
+        return this.getBaseMapper().queryUserRoleIdsByUid(id);
     }
 }

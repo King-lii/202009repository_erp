@@ -1,7 +1,8 @@
 package com.lx.sys.service;
 
-import com.lx.sys.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lx.sys.entity.User;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserService extends IService<User> {
 
+    void saveUserRole(@Param("uid") Integer uid, @Param("rids") Integer[] rids);
 }

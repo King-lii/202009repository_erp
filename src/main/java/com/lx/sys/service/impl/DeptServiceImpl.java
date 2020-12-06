@@ -1,10 +1,9 @@
 package com.lx.sys.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lx.sys.entity.Dept;
 import com.lx.sys.mapper.DeptMapper;
 import com.lx.sys.service.IDeptService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,14 +20,20 @@ import java.io.Serializable;
 @Service
 @Transactional
 public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements IDeptService {
+
     @Override
-    public Dept getOne(Wrapper<Dept> queryWrapper, boolean throwEx) {
-        return super.getOne(queryWrapper, throwEx);
+    public Dept getById(Serializable id) {
+        return super.getById(id);
     }
 
     @Override
     public boolean updateById(Dept entity) {
         return super.updateById(entity);
+    }
+
+    @Override
+    public boolean save(Dept entity) {
+        return super.save(entity);
     }
 
     @Override

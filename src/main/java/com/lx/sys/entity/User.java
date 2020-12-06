@@ -1,5 +1,6 @@
 package com.lx.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -66,5 +67,9 @@ public class User implements Serializable {
 
     private String salt;
 
+    @TableField(exist = false)
+    private String leadername;
+    @TableField(exist = false)
+    private String deptname;
 
 }

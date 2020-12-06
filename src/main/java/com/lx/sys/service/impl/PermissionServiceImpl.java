@@ -1,10 +1,9 @@
 package com.lx.sys.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lx.sys.entity.Permission;
 import com.lx.sys.mapper.PermissionMapper;
 import com.lx.sys.service.IPermissionService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
