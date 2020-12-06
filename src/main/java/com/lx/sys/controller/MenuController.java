@@ -9,6 +9,8 @@ import com.lx.sys.commen.*;
 import com.lx.sys.entity.Permission;
 import com.lx.sys.entity.User;
 import com.lx.sys.service.IPermissionService;
+import com.lx.sys.service.IRoleService;
+import com.lx.sys.service.IUserService;
 import com.lx.sys.vo.PermissionVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,8 @@ public class MenuController {
 
     @Autowired
     private IPermissionService permissionService;
+    @Autowired
+    private IRoleService roleService;
 
     @RequestMapping("loadIndexLeftMenuJson")
     public DataGridView loadIndexLeftMenuJson(){
@@ -47,11 +51,24 @@ public class MenuController {
         List<Permission> list = null;
         if (user.getType().equals(Constast.USER_TYPE_SUPER)){
             list = permissionService.list(queryWrapper);
-        }else if (user.getType().equals(Constast.USER_TYPE_NORMAL)){
+        }else {
             /**
              * 根据用户ID+角色+权限去查询
              */
-            list = permissionService.list(queryWrapper);
+            Integer userId = user.getId();
+            List<Integer> currentUserRoleIds = roleService.queryUserRoleIdsByUid(userId);
+            Set<Integer> pids = new HashSet<>();
+            for (Integer rid:currentUserRoleIds
+                 ) {
+                List<Integer> permissionIds = roleService.queryRolePermissionIdsByRid(rid);
+                pids.addAll(permissionIds);
+            }
+            if (pids.size()>0){
+                queryWrapper.in("id",pids);
+                list = permissionService.list(queryWrapper);
+            }else {
+                list = new ArrayList<>();
+            }
         }
         List<TreeNode> treeNodes = new ArrayList<>();
         assert list != null;

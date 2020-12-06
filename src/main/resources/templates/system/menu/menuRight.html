@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="utf-8">
     <title>菜单管理-右</title>
@@ -56,15 +57,15 @@
 <div>
     <table class="layui-hide" id="menuTable" lay-filter="menuTable">
         <div id="menuToolBar" style="display: none">
-            <button type="button" lay-event="add" class="layui-btn " lay-submit="" lay-filter="doSearch"><span
+            <button type="button" shiro:hasPermission="menu:create" lay-event="add" class="layui-btn " lay-submit="" lay-filter="doSearch"><span
                     class="layui-icon layui-icon-add-1"></span>添加菜单
             </button>
         </div>
         <div id="menuRowBar" style="display: none">
-            <button type="button" lay-event="update" class="layui-btn-sm layui-btn-danger" lay-submit=""
+            <button type="button" lay-event="update" shiro:hasPermission="menu:update" class="layui-btn-sm layui-btn-danger" lay-submit=""
                     lay-filter="doSearch"><span class="layui-icon layui-icon-edit"></span>修改
             </button>
-            <button type="button" lay-event="delete" class="layui-btn-sm layui-btn-danger" lay-submit=""
+            <button type="button" lay-event="delete" shiro:hasPermission="menu:delete" class="layui-btn-sm layui-btn-danger" lay-submit=""
                     lay-filter="doSearch"><span class="layui-icon layui-icon-delete"></span>删除
             </button>
         </div>
