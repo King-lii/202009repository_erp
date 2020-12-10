@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -19,7 +21,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
+@Accessors(chain = true)//生成setter方法是void类型；如果设置为true生成的setter方法返回this（当前对象）
 @TableName("sys_loginfo")
 public class Loginfo implements Serializable {
 
@@ -31,7 +33,7 @@ public class Loginfo implements Serializable {
 
     private String loginip;
 
-    private LocalDateTime logintime;
+    private Date logintime;
 
 
 }

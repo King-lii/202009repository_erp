@@ -20,7 +20,7 @@ public class WebUtils {
     public static HttpServletRequest getHttpServletRequest(){
         return getServletRequestAttributes().getRequest();
     }
-
+   
     /**
      * 得到当前线程的响应对象
      * @return

@@ -10,9 +10,15 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class LoginfoVo extends Loginfo {
     private static final long serialVersionUID = 1L;
-
-    private Integer page;
-    private Integer limit;
+    /**
+     * 设置分页的初始值和页数
+     */
+    private Integer page=1;
+    private Integer limit=10;
+    /**
+     *
+     */
+    private Integer[] ids;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date startTime;

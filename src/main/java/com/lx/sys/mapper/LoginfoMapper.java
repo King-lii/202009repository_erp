@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @author lidada
  * @since 2020-11-11
  */
-@Mapper
 public interface LoginfoMapper extends BaseMapper<Loginfo> {
 
 }

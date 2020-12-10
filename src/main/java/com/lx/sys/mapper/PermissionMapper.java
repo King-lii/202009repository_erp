@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @author lidada
  * @since 2020-11-04
  */
-@Mapper
 public interface PermissionMapper extends BaseMapper<Permission> {
 
 }
