@@ -23,4 +23,11 @@ public class BusinessController {
 public String toCustomerManager(){
     return "/business/customer/customerManager.html";
 }
+    /**
+     * 跳转到供应商管理
+     */
+    @RequestMapping("toProviderManager")
+    public String toProviderManager(){
+        return "/business/provider/providerManager.html";
+    }
 }

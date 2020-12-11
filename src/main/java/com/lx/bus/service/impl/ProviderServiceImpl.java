@@ -1,10 +1,11 @@
 package com.lx.bus.service.impl;
 
-import com.lx.bus.entity.Customer;
-import com.lx.bus.mapper.CustomerMapper;
-import com.lx.bus.service.ICustomerService;
+import com.lx.bus.entity.Provider;
+import com.lx.bus.mapper.ProviderMapper;
+import com.lx.bus.service.IProviderService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -15,18 +16,18 @@ import java.util.Collection;
  * </p>
  *
  * @author lidada
- * @since 2020-12-07
+ * @since 2020-12-10
  */
 @Service
-public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> implements ICustomerService {
-    //重写增删改查完成缓存
+@Transactional//是声明式事务管理 编程中使用的注解
+public class ProviderServiceImpl extends ServiceImpl<ProviderMapper, Provider> implements IProviderService {
     @Override
-    public boolean save(Customer entity) {
+    public boolean save(Provider entity) {
         return super.save(entity);
     }
 
     @Override
-    public boolean updateById(Customer entity) {
+    public boolean updateById(Provider entity) {
         return super.updateById(entity);
     }
 
@@ -41,7 +42,8 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     }
 
     @Override
-    public Customer getById(Serializable id) {
+    public Provider getById(Serializable id) {
         return super.getById(id);
     }
+
 }
