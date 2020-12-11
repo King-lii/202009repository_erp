@@ -1,4 +1,4 @@
-package com.lx.vo;
+package com.lx.bus.vo;
 
 import com.lx.sys.entity.Loginfo;
 import lombok.Data;

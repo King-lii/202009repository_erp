@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = {"com.lx.sys.mapper"})
+@MapperScan(basePackages = {"com.lx.*.mapper"})
 public class RepositoryErpApplication {
 
     public static void main(String[] args) {

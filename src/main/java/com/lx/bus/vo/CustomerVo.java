@@ -1,4 +1,4 @@
-package com.lx.vo;
+package com.lx.bus.vo;
 
 import com.lx.bus.entity.Customer;
 import lombok.Data;

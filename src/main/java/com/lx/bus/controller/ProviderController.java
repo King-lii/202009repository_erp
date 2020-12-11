@@ -8,7 +8,7 @@ import com.lx.bus.entity.Provider;
 import com.lx.bus.service.IProviderService;
 import com.lx.sys.common.DataGridView;
 import com.lx.sys.common.ResultObj;
-import com.lx.vo.ProviderVo;
+import com.lx.bus.vo.ProviderVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

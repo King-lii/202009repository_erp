@@ -1,4 +1,4 @@
-package com.lx.vo;
+package com.lx.bus.vo;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

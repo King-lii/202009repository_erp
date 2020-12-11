@@ -1,6 +1,5 @@
-package com.lx.vo;
+package com.lx.bus.vo;
 
-import com.lx.bus.entity.Customer;
 import com.lx.bus.entity.Provider;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
