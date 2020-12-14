@@ -51,6 +51,7 @@ public String toCustomerManager(){
      */
     @RequestMapping("toOutportManager")
     public String toOutportManager(){
-        return "/business/outport/outportManagerManager.html";
+        return "/business/outport/outportManager.html";
     }
+
 }

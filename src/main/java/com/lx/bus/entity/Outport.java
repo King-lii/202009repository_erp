@@ -1,5 +1,6 @@
 package com.lx.bus.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -24,6 +25,7 @@ import lombok.experimental.Accessors;
 public class Outport implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private Integer id;
 
     private Integer providerid;
 
@@ -40,6 +42,10 @@ public class Outport implements Serializable {
     private String remark;
 
     private Integer goodsid;
-
-
+    @TableField(exist = false)
+    private  String providername;
+    @TableField(exist = false)
+    private String goodsname;
+    @TableField(exist = false)
+    private String size;
 }

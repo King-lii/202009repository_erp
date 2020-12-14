@@ -16,7 +16,7 @@ public class Constast {
      * 展开类型
      */
     public static final Integer OPEN_TRUE=1;
-    public static final Integer OPRN_FALSE=0;
+    public static final Integer OPEN_FALSE=0;
     /**
      * 可以状态
      */
