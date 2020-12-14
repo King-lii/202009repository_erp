@@ -30,4 +30,28 @@ public String toCustomerManager(){
     public String toProviderManager(){
         return "/business/provider/providerManager.html";
     }
+    /**
+     * 跳转到商品管理
+     */
+    @RequestMapping("toGoodsManager")
+    public String toGoodsManager(){
+        return "/business/goods/goodsManager.html";
+    }
+
+    /**
+     * 跳转到商品进货管理
+     */
+    @RequestMapping("toInportManager")
+    public String toInportManager(){
+        return "/business/inport/inportManager.html";
+    }
+
+    /**
+     * 跳转到商品退货管理
+     */
+    @RequestMapping("toOutportManager")
+    public String toOutportManager(){
+        return "/business/outport/outportManager.html";
+    }
+
 }

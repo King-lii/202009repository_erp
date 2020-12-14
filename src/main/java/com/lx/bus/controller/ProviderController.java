@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lx.bus.entity.Provider;
+import com.lx.bus.service.IGoodsService;
 import com.lx.bus.service.IProviderService;
+import com.lx.sys.common.Constast;
 import com.lx.sys.common.DataGridView;
 import com.lx.sys.common.ResultObj;
 import com.lx.bus.vo.ProviderVo;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * <p>
@@ -30,6 +33,8 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/provider")
 public class ProviderController {
+    @Autowired
+    private IGoodsService iGoodsService;
     @Autowired
     private IProviderService iProviderService;
     /**
@@ -110,6 +115,16 @@ public class ProviderController {
             e.printStackTrace();
             return ResultObj.DELETE_ERROR;
         }
+    }
+    /**
+     * 加载所有可用的供应商
+     */
+    @RequestMapping("loadAllProviderForSelect")
+    public  DataGridView loadAllProviderForSelect(){
+        QueryWrapper<Provider> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("available", Constast.AVAILABLE_TRUE);
+        List<Provider> list = this.iProviderService.list(queryWrapper);
+        return new DataGridView(list);
     }
 
 }

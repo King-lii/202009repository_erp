@@ -19,11 +19,10 @@
         <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
         <mybatisplus.version>3.2.0</mybatisplus.version>
         <shiro.version>1.4.1</shiro.version>
-        <druid.version>1.1.18</druid.version>
+        <druid.version>1.1.21</druid.version>
         <log4j.version>1.2.17</log4j.version>
         <hutool.version>4.6.6</hutool.version>
         <lang3.version>3.9</lang3.version>
-        <pinyin4j.version>2.5.1</pinyin4j.version>
     </properties>
 
     <dependencies>
@@ -164,26 +163,14 @@
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>1.9.6</version>
         </dependency>
-
-        <!-- pinyin4j -->
-        <dependency>
-            <groupId>com.belerweb</groupId>
-            <artifactId>pinyin4j</artifactId>
-            <version>${pinyin4j.version}</version>
-        </dependency>
-
     </dependencies>
+
 
     <build>
         <plugins>
             <plugin>
-                <!--热部署配置-->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <!--fork:如果没有该项配置,整个devtools不会起作用-->
-                    <fork>true</fork>
-                </configuration>
             </plugin>
         </plugins>
     </build>
