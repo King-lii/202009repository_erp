@@ -27,4 +27,9 @@ public class Constast {
      */
     public static final Integer USER_TYPE_SUPER=0;
     public static final Integer USER_TYPE_NORMAL=1;
+
+    /**
+     * 照片默认值
+     */
+    public static final String IMAGES_DEFAULTGOODSIMG_PNG="images/defaultgoodsimg.png";
 }

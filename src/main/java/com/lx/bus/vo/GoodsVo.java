@@ -1,12 +1,12 @@
-package com.lx.vo;
+package com.lx.bus.vo;
 
-import com.lx.bus.entity.Customer;
+import com.lx.bus.entity.Goods;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false) //生成equals(Object other) 和 hashCode()方法
-public class CustomerVo extends Customer {
+public class GoodsVo extends Goods {
     /**
      * 序列化方便数据传递，相当于加密解密
      */
@@ -16,9 +16,6 @@ public class CustomerVo extends Customer {
      */
     private Integer page=1;
     private Integer limit=10;
-    /**
-     *
-     */
-    private Integer[] ids;
+
 
 }

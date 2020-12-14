@@ -5,7 +5,7 @@ import com.lx.sys.common.*;
 import com.lx.sys.entity.Permission;
 import com.lx.sys.entity.User;
 import com.lx.sys.service.IPermissionService;
-import com.lx.vo.PermissionVo;
+import com.lx.sys.vo.PermissionVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

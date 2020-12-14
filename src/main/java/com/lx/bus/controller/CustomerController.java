@@ -8,7 +8,7 @@ import com.lx.bus.entity.Customer;
 import com.lx.bus.service.ICustomerService;
 import com.lx.sys.common.DataGridView;
 import com.lx.sys.common.ResultObj;
-import com.lx.vo.CustomerVo;
+import com.lx.bus.vo.CustomerVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,13 +1,16 @@
-package com.lx.vo;
+package com.lx.bus.vo;
 
-import com.lx.bus.entity.Customer;
-import com.lx.bus.entity.Provider;
+import com.lx.bus.entity.Goods;
+import com.lx.bus.entity.Inport;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = false) //生成equals(Object other) 和 hashCode()方法
-public class ProviderVo extends Provider {
+public class InportVo extends Inport {
     /**
      * 序列化方便数据传递，相当于加密解密
      */
@@ -17,9 +20,9 @@ public class ProviderVo extends Provider {
      */
     private Integer page=1;
     private Integer limit=10;
-    /**
-     *
-     */
-    private Integer[] ids;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date startTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date endTime;
 
 }

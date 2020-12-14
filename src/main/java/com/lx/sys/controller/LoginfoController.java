@@ -8,7 +8,7 @@ import com.lx.sys.common.DataGridView;
 import com.lx.sys.common.ResultObj;
 import com.lx.sys.entity.Loginfo;
 import com.lx.sys.service.ILoginfoService;
-import com.lx.vo.LoginfoVo;
+import com.lx.sys.vo.LoginfoVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
