@@ -50,6 +50,7 @@ shiro:
     - /sys/toLogin*
     - /login/login*
     - /resources/**
+    - /login/getCode
   login-url: /index.html #默认登录页面
   log-out-url: /login/logout*
   authc-ulrs:
