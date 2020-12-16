@@ -31,4 +31,8 @@ public class ResultObj {
     public static final ResultObj OPERATE_ERROR=new ResultObj(Constast.ERROR,"操作失败");
     private Integer code;
     private String msg;
+
+    public static final ResultObj BACKINPORT_SUCCESS = new ResultObj(Constast.OK,"退货成功");
+    public static final ResultObj BACKINPORT_ERROR = new ResultObj(Constast.ERROR,"退货失败");
+    public static final ResultObj SYNCCACHE_SUCCESS = new ResultObj(Constast.OK,"同步缓存成功");
 }

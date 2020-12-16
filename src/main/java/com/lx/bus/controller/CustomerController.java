@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lx.bus.entity.Customer;
 import com.lx.bus.service.ICustomerService;
+import com.lx.sys.common.Constast;
 import com.lx.sys.common.DataGridView;
 import com.lx.sys.common.ResultObj;
 import com.lx.bus.vo.CustomerVo;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * <p>
@@ -111,5 +113,17 @@ public class CustomerController {
             return ResultObj.DELETE_ERROR;
         }
     }
+    /**
+     * 加载所有客户的下拉列表
+     * @return
+     */
+    @RequestMapping("loadAllCustomerForSelect")
+    public DataGridView loadAllCustomerForSelect(){
+        QueryWrapper<Customer> queryWrapper = new QueryWrapper<Customer>();
+        queryWrapper.eq("available", Constast.AVAILABLE_TRUE);
+        List<Customer> list = iCustomerService.list(queryWrapper);
+        return new DataGridView(list);
+    }
+
 
 }

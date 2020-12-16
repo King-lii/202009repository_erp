@@ -1,0 +1,25 @@
+package com.lx.bus.vo;
+
+import com.lx.bus.entity.Sales;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
+
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class SalesbackVo extends Sales {
+
+    private Integer page = 1;
+
+    private Integer limit = 10;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date startTime;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date endTime;
+
+}
