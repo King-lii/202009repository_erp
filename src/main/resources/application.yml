@@ -1,5 +1,7 @@
 #配置数据源的属性
 spring:
+  profiles:
+    active: test
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
