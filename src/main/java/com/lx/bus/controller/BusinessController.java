@@ -21,21 +21,21 @@ public class BusinessController {
  */
 @RequestMapping("toCustomerManager")
 public String toCustomerManager(){
-    return "/business/customer/customerManager.html";
+    return "/business/customer/customerManager";
 }
     /**
      * 跳转到供应商管理
      */
     @RequestMapping("toProviderManager")
     public String toProviderManager(){
-        return "/business/provider/providerManager.html";
+        return "/business/provider/providerManager";
     }
     /**
      * 跳转到商品管理
      */
     @RequestMapping("toGoodsManager")
     public String toGoodsManager(){
-        return "/business/goods/goodsManager.html";
+        return "/business/goods/goodsManager";
     }
 
     /**
@@ -43,7 +43,7 @@ public String toCustomerManager(){
      */
     @RequestMapping("toInportManager")
     public String toInportManager(){
-        return "/business/inport/inportManager.html";
+        return "/business/inport/inportManager";
     }
 
     /**
@@ -51,14 +51,14 @@ public String toCustomerManager(){
      */
     @RequestMapping("toOutportManager")
     public String toOutportManager(){
-        return "/business/outport/outportManager.html";
+        return "/business/outport/outportManager";
     }
     /**
      * 跳转到商品销售管理
      */
     @RequestMapping("toSalesManager")
     public String toSalesManager(){
-        return "/business/sales/salesManager.html";
+        return "/business/sales/salesManager";
     }
 
     /**
@@ -66,7 +66,7 @@ public String toCustomerManager(){
      */
     @RequestMapping("toSalesbackManager")
     public String toSalesbackManager(){
-        return "/business/salesback/salesbackManager.html";
+        return "/business/salesback/salesbackManager";
     }
 
 }

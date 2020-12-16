@@ -2,7 +2,7 @@ package com.lx.sys.controller;
 
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
-import com.lx.sys.common.ActiverUser;
+import com.lx.sys.commen.ActiverUser;
 import com.lx.sys.common.ResultObj;
 import com.lx.sys.common.WebUtils;
 import com.lx.sys.entity.Loginfo;
