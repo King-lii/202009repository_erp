@@ -28,9 +28,9 @@ import java.util.Date;
 @Transactional
 public class OutportServiceImpl extends ServiceImpl<OutportMapper, Outport> implements IOutportService {
 
-    @Autowired(required = false)
+    @Autowired(required = false)//声明bean非必要
     private InportMapper inportMapper;
-    @Autowired(required = false)
+    @Autowired(required = false)//声明bean非必要
     private GoodsMapper goodsMapper;
 
 

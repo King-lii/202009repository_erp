@@ -253,7 +253,7 @@
 				,{fixed: 'right', title:'操作', toolbar: '#goodsRowBar',align:'center',width:'200'}
 			] ]
 			,done: function(res, curr, count){ //处理删除某一页最后一条数据的BUG
-
+				$("table").css("width", "100%");
 				if(res.data.length==0&&curr!=1){
 					tableIns.reload({
 						page:{
