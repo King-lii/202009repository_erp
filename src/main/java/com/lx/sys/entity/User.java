@@ -1,27 +1,37 @@
 package com.lx.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
  * 
  * </p>
  *
- * @author lidada
- * @since 2020-10-14
+ * @author lx
+ * @since 2020-10-06
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
 @TableName("sys_user")
-public class User {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
+
 
     private String name;
 
@@ -54,10 +64,12 @@ public class User {
      * 头像地址
      */
     private String imgpath;
-    /**
-     * shiro加密盐
-     */
+
     private String salt;
 
+    @TableField(exist = false)
+    private String leadername;
+    @TableField(exist = false)
+    private String deptname;
 
 }
