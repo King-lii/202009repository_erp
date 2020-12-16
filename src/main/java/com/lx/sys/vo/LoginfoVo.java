@@ -16,10 +16,13 @@ public class LoginfoVo extends Loginfo {
     private Integer page=1;
     private Integer limit=10;
     /**
-     *
+     *设置多查询参数
      */
     private Integer[] ids;
-
+    /**
+     * 加入验证码变量
+     */
+    private String code;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date startTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

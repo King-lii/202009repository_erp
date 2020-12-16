@@ -53,5 +53,20 @@ public String toCustomerManager(){
     public String toOutportManager(){
         return "/business/outport/outportManager.html";
     }
+    /**
+     * 跳转到商品销售管理
+     */
+    @RequestMapping("toSalesManager")
+    public String toSalesManager(){
+        return "/business/sales/salesManager.html";
+    }
+
+    /**
+     * 跳转到商品销售退货管理
+     */
+    @RequestMapping("toSalesbackManager")
+    public String toSalesbackManager(){
+        return "/business/salesback/salesbackManager.html";
+    }
 
 }

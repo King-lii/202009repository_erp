@@ -1,11 +1,13 @@
 package com.lx.sys.controller;
 
 
+import cn.hutool.captcha.CaptchaUtil;
+import cn.hutool.captcha.LineCaptcha;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lx.sys.commen.DataGridView;
-import com.lx.sys.commen.ResultObj;
+import com.lx.sys.common.DataGridView;
+import com.lx.sys.common.ResultObj;
 import com.lx.sys.entity.Loginfo;
 import com.lx.sys.service.ILoginfoService;
 import com.lx.sys.vo.LoginfoVo;
@@ -15,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 /**
@@ -26,62 +31,91 @@ import java.util.Collection;
  *  前端控制器
  * </p>
  *
- * @author lx
- * @since 2020-10-07
+ * @author lidada
+ * @since 2020-11-11
  */
 @RestController
-@RequestMapping("loginfo")
+@RequestMapping("/loginfo")
 public class LoginfoController {
 
     @Autowired
-    ILoginfoService loginfoService;
+    private ILoginfoService iLoginfoService;
 
     /**
      * 全查询
+     * @param loginfoVo
+     * @return
      */
     @RequestMapping("loadAllLoginfo")
     public DataGridView loadAllLoginfo(LoginfoVo loginfoVo){
-
         IPage<Loginfo> page = new Page<>(loginfoVo.getPage(),loginfoVo.getLimit());
-
-        QueryWrapper<Loginfo> queryWrapper = new QueryWrapper<>();
+        /**
+         * 实例化QueryWrapper对象进行数据库操作
+         */
+        QueryWrapper<Loginfo> queryWrapper=new QueryWrapper<>();
+        /**
+         * 对数据库进行操作，通过
+         */
+        /** 1.
+         * StringUtils.isNotBlank();
+         * 判断参数是否不为空.
+         * 1.如果不为空返回true。
+         * 2.如果为空返回false。
+         * StringUtils.isNotEmpty(null)  -> false
+         * StringUtils.isNotEmpty("")  -> false
+         * StringUtils.isNotEmpty("a") -> true
+         * StringUtils.isNotEmpty(" ") -> true
+         */
         queryWrapper.like(StringUtils.isNotBlank(loginfoVo.getLoginname()),"loginname",loginfoVo.getLoginname());
         queryWrapper.like(StringUtils.isNotBlank(loginfoVo.getLoginip()),"loginip",loginfoVo.getLoginip());
-        queryWrapper.ge(null != loginfoVo.getStartTime() , "logintime",loginfoVo.getStartTime());
-        queryWrapper.le(null != loginfoVo.getEndTime(),"logintime",loginfoVo.getEndTime());
+        queryWrapper.ge(loginfoVo.getStartTime()!=null,"logintime",loginfoVo.getStartTime());
+        queryWrapper.le(loginfoVo.getEndTime()!=null,"logintime",loginfoVo.getEndTime());
+        /**
+         * 对查询数据按照logintime字段降序
+         */
         queryWrapper.orderByDesc("logintime");
-
-        this.loginfoService.page(page,queryWrapper);
-
+        /**
+         * 将分页信息放入page
+         */
+        this.iLoginfoService.page(page,queryWrapper);
+        /**
+         * 实例化一个分页总行数和分耶记录表的自定义数据类型
+         */
         return new DataGridView(page.getTotal(),page.getRecords());
+
     }
 
     /**
-     * 删除
+     * 单个通过id删除变量
+     * @param id
+     * @return
      */
     @RequestMapping("deleteLoginfo")
     public ResultObj deleteLoginfo(Integer id){
         try {
-            this.loginfoService.removeById(id);
+            this.iLoginfoService.removeById(id);
             return ResultObj.DELETE_SUCCESS;
-        }catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
+    @RequestMapping("batchDeleteLoginfo")
+    public ResultObj deleteLoginfo(LoginfoVo LoginfoVo){
+        try {
+            /**
+             * 将数据转换为list列表，用于查询
+             */
+            Collection<Serializable> idList = new ArrayList<Serializable>();
+            for (Integer id : LoginfoVo.getIds()) {
+                idList.add(id);
+            }
+            this.iLoginfoService.removeByIds(idList);
+            return ResultObj.DELETE_SUCCESS;
+        } catch (Exception e) {
             e.printStackTrace();
             return ResultObj.DELETE_ERROR;
         }
     }
 
-    /**
-     * 批量删除
-     */
-    @RequestMapping("batchDeleteLoginfo")
-    public ResultObj batchDeleteLoginfo(LoginfoVo loginfoVo){
-        try {
-            Collection<Serializable> idList = new ArrayList<>(Arrays.asList(loginfoVo.getIds()));
-            this.loginfoService.removeByIds(idList);
-            return ResultObj.DELETE_SUCCESS;
-        }catch (Exception e){
-            e.printStackTrace();
-            return ResultObj.DELETE_ERROR;
-        }
-    }
 }

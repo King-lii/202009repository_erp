@@ -1,21 +1,16 @@
-#端口配置
-server:
-  port: 8080
 #配置数据源的属性
 spring:
-  profiles:
-    active: test
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/tmall_ssm?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+      url: jdbc:mysql://127.0.0.1:3306/repository_erp?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
       username: root
-      password: xwq997..
+      password: 123525lbl.
       max-active: 20
       max-wait: 5000
       initial-size: 1
       filters: stat,log4j,wall
-      validationQuery: SELECT 1   #验证连接
+      validationQuery: SELECT 'x'   #验证连接
       enable: true
       #监控配置
       stat-view-servlet:
@@ -29,6 +24,9 @@ spring:
   thymeleaf:
     cache: false
     enabled: true
+  #      web-stat-filter:
+  #        enabled: true
+  #        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -43,7 +41,6 @@ mybatis-plus:
     banner: true
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
 #shiro的配置
 shiro:
   hash-algorithm-name: md5
@@ -53,7 +50,10 @@ shiro:
     - /sys/toLogin*
     - /login/login*
     - /resources/**
-  login-url: /index.html
+    - /login/getCode
+  login-url: /index.html #默认登录页面
   log-out-url: /login/logout*
   authc-ulrs:
     - /**
+
+
